@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family-Poppins:400,500,700');
+/* shared styles across all pages */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 1.2rem;
+  color: #7CB076;
+  min-height: 100vh;
+}
+
+.full-height-grow{
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-logo{
+  display: flex;
+  align-items: center;
+  font-size: 1.25em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-nav ul, .footer-nav ul{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav a, .footer-nav a {
+  color: inherit;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.main-nav a:hover, .footer-nav a:hover{
+  color: #C2EABD;
+}
+
+.main-header, .main-footer {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header{
+  height: 140px;
+}
+
+.main-footer{
+  height: 70px;
+  background-color: #202027;
+  font-weight: bold;
+}
+
+.social-link img{
+  width: 1em;
+  margin-right= 0.25rem;
+}
+
+.main-footer .container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.container{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  flex-grow: 1;
+}
+
+.title{
+  font-weight: 500;
+  font-size: 3em;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.subtitle{
+  font-weight: 500em;
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+}
+
+.btn{
+  color: black;
+  background-color: #CDDCFD;
+  padding: .75rem 1.5rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  font-size:0.9rem;
+  outline-color: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color:#C2EABD;
+}
+
+.btn:focus{
+  background-color:#74A76D;
+}
