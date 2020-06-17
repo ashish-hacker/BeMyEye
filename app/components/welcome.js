@@ -22,16 +22,12 @@ export default class Welcome extends React.Component  {
   
     componentDidMount() {
       this._loadFontsAsync();
+      var thingToSay = 'Welcome to Be My Eyes! Shop along with me or find a human assistant nearby. Please tap the screen to continue';
+      Speech.speak(thingToSay);
     }
 
-    speak() {
-      var thingToSay = 'Welcome to Be My Eyes! Shop along with me or find a human assistant nearby.';
-      Speech.speak(thingToSay);
-    }
-    say() {
-      var thingToSay = 'To shop alone with me tap twice. To find a human assistant nearby, press your screen for a few seconds';
-      Speech.speak(thingToSay);
-    }
+    
+    
     render(){
 
    
@@ -40,10 +36,9 @@ export default class Welcome extends React.Component  {
           
         <View style={styles.container}>
           <Image source={require('../assets/images/logo.png')} style={styles.logo}></Image>
-          <Text style={styles.welcome} onPress={this.speak}>Welcome!{"\n"}¡Bienvenido</Text>
-          
+          <Text style={styles.welcome} onPress={() => this.props.navigation.navigate('Select')}>Welcome!{"\n"}¡Bienvenido</Text>
           <Image source={require('../assets/images/home.png')} style={styles.footer}></Image>
-          <Text style={styles.action} onLongPress={this.say}>LOOOOOOOOOONG</Text>
+         
         
         </View>
         
@@ -78,13 +73,6 @@ export default class Welcome extends React.Component  {
             top:'40%',
             zIndex:2,
             color:'#c2eabd',
-        },
-        action: {
-            fontFamily:'Avenir',
-            fontSize: 70,
-            position:'absolute',
-            zIndex:2,
-            bottom:'15%',
         },
         footer:{
           height:'110%',
