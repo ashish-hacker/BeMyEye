@@ -26,7 +26,7 @@ export default class Produceid extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-    var thingToSay = 'Tap the screen to identify fresh produce around you';
+    var thingToSay = 'Tap the screen to identify edible items around you';
     Speech.speak(thingToSay);
   }
   
@@ -74,7 +74,7 @@ export default class Produceid extends React.Component {
             },
             body: JSON.stringify({imgurl:pUrl})
           }).then(response => response.json())
-          .then(data => (Speech.speak(data.names.toString())))
+          .then(data => (Speech.speak(data.names.toString()+". To read its contents, press on the screen for a few seconds.")))
           .catch(err=>console.log(err));
 
               
@@ -120,7 +120,7 @@ export default class Produceid extends React.Component {
           </Camera>
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
          <Image source={require('../assets/images/camerabtn.png')} style={{position:'absolute',zIndex:3,bottom:'5%',resizeMode:'contain',height:'25%',width:'25%',alignSelf:'center'}}></Image>
-          <Text style={{color:'transparent', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()}>C</Text>
+          <Text style={{color:'transparent', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()} onLongPress={() => this.props.navigation.navigate('Cameracontents')}>C</Text>
         </View>
       );
     }
