@@ -14,7 +14,7 @@ var cUrl=null;
 var pUrl=null;
 
 //var base64Img =null;
-export default class Cameracontents extends React.Component {
+export default class Produceid extends React.Component {
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
@@ -26,7 +26,7 @@ export default class Cameracontents extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-    var thingToSay = 'Tap the screen read the contents of the object';
+    var thingToSay = 'Tap the screen to identify fresh produce around you';
     Speech.speak(thingToSay);
   }
   
@@ -64,23 +64,23 @@ export default class Cameracontents extends React.Component {
               pUrl=cUrl.toString();
               console.log(pUrl);
               x=1;
-          
-            let labelcontent=await fetch('http://2c2be9aa1254.ngrok.io/textify', {
+
+
+            let producelabel=await fetch('http://2c2be9aa1254.ngrok.io/getfoodlabels', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'cache-control': 'no-cache'
             },
-            body: JSON.stringify({root:"",imgurl:pUrl})
+            body: JSON.stringify({imgurl:pUrl})
           }).then(response => response.json())
-          .then(data => (Speech.speak(data.results.toString())))
+          .then(data => (Speech.speak(data.names.toString())))
           .catch(err=>console.log(err));
 
-
+              
           }).catch(err=>console.log(err));
          
 
-           
      
     };
 
@@ -120,7 +120,7 @@ export default class Cameracontents extends React.Component {
           </Camera>
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
          <Image source={require('../assets/images/camerabtn.png')} style={{position:'absolute',zIndex:3,bottom:'5%',resizeMode:'contain',height:'25%',width:'25%',alignSelf:'center'}}></Image>
-          <Text style={{color:'transparent', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()} >C</Text>
+          <Text style={{color:'transparent', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()}>C</Text>
         </View>
       );
     }

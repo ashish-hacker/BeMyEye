@@ -64,26 +64,22 @@ export default class Objid extends React.Component {
               pUrl=cUrl.toString();
               console.log(pUrl);
               x=1;
-              return pUrl
-          }).then(fetch('http://78a340d08f3e.ngrok.io/id', {
+              
+
+
+            let objlabel= await fetch('http://2c2be9aa1254.ngrok.io/labelanimage', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'cache-control': 'no-cache'
             },
             body: JSON.stringify({imgurl:pUrl})
-          }).then(async r => {
-            let ptype = await r;
-            
-            console.log(ptype.status);  
-            console.log(ptype.body)
-        }).catch(err=>console.log(err))
-    ).catch(err=>console.log(err));
-         
+          }).then(response => response.json())
+          .then(data => (Speech.speak(data.results.toString()+". To read its contents, press on the screen for a few seconds.")))
+          .catch(err=>console.log(err));
 
-    var thingToSay = 'Nutella. To read contents of Nutella, press on the screen for a few seconds.';
-    Speech.speak(thingToSay);
-           
+          }).catch(err=>console.log(err));
+      
      
     };
 
@@ -123,7 +119,7 @@ export default class Objid extends React.Component {
           </Camera>
           {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
          <Image source={require('../assets/images/camerabtn.png')} style={{position:'absolute',zIndex:3,bottom:'5%',resizeMode:'contain',height:'25%',width:'25%',alignSelf:'center'}}></Image>
-          <Text style={{color:'#fff', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()} onLongPress={() => this.props.navigation.navigate('Cameracontents')}>C</Text>
+          <Text style={{color:'transparent', position:'absolute',zIndex:4,bottom:100, fontFamily:'Avenir', alignSelf:'center',fontSize:100}} onPress={() => takePicture()} onLongPress={() => this.props.navigation.navigate('Cameracontents')}>C</Text>
         </View>
       );
     }

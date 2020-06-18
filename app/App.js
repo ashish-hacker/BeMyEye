@@ -7,6 +7,7 @@ import Objid from './components/objid';
 import Cameracontents from './components/cameracontents';
 import FindAssist from './components/findassist';
 import Objselection from './components/objselection';
+import Produceid from './components/produceid';
 
 
 const Stack = createStackNavigator();
@@ -29,6 +30,11 @@ function MyStack() {
         component={Objselection}
         options={{ headerShown: false}} 
         /> 
+        <Stack.Screen 
+        name="Produceid" 
+        component={Produceid}
+        options={{ headerShown: false}} 
+        />
        <Stack.Screen 
         name="Objid" 
         component={Objid}

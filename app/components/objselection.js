@@ -20,7 +20,7 @@ export default class Objselection extends React.Component  {
   
     componentDidMount() {
       this._loadFontsAsync();
-      var thingToSay = 'Tap the screen to shop fresh produce. If you are looking for other products, press the screen for a few seconds.';
+      var thingToSay = 'Tap the screen to shop edible items. If you are looking for other products, press the screen for a few seconds.';
       Speech.speak(thingToSay);
     }
   
@@ -28,9 +28,9 @@ export default class Objselection extends React.Component  {
         if (this.state.fontsLoaded) {
         return (
         <View style={styles.container}>
-          <Image source={require('../assets/images/fresh.png')} style={styles.alone}></Image>
-          <Text style={styles.h1} onPress={() => this.props.navigation.navigate('Objid')}> PRODUCE</Text>
-          <Image source={require('../assets/images/others.png')} style={styles.assist}></Image>
+          <Image source={require('../assets/images/ed.png')} style={styles.alone}></Image>
+          <Text style={styles.h1} onPress={() => this.props.navigation.navigate('Produceid')}> PRODUCE</Text>
+          <Image source={require('../assets/images/ne.png')} style={styles.assist}></Image>
           <Text style={styles.h2} onLongPress={() => this.props.navigation.navigate('Objid')}> OTHERS</Text>
          
         </View>

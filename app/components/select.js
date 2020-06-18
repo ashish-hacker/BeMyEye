@@ -29,7 +29,7 @@ export default class Select extends React.Component  {
         return (
         <View style={styles.container}>
           <Image source={require('../assets/images/shopalone.png')} style={styles.alone}></Image>
-          <Text style={styles.h1} onPress={() => this.props.navigation.navigate('Objid')}> SHOP ALONE</Text>
+          <Text style={styles.h1} onPress={() => this.props.navigation.navigate('Objselection')}> SHOP ALONE</Text>
           <Image source={require('../assets/images/findassistant.png')} style={styles.assist}></Image>
           <Text style={styles.h2} onLongPress={() => this.props.navigation.navigate('Findassist')}> ASSISTANT</Text>
          
