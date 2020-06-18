@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={AIzaSyDRz2k35nwA3omnfDNA3oFCwH6RqLZhpuE}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="styles.css" rel="stylesheet">
   <link href="join.css" rel="stylesheet">
+  <style type="text/css">
+    #map {
+      width: 100%;
+      height: 480px;
+      }
+  </style>
   <title></title>
 </head>
 <body class="full-height-grow">
@@ -22,7 +31,14 @@
         </ul>
       </nav>
     </header>
+</script>
     <section class="join-main-section">
+
+      <div id="map">
+        <label>Press For Current Location:</label>
+        <i aria-hidden="true" class="dot circle outline link icon" id="locator-button"></i>
+        <iframe id = "google_map" width="500" height="400" frameborder="0" scrolling ="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk?output=embed"></iframe>
+      </div>
       <h1 class="join-text">
         Join the
         <span class="accent-text">fun.</span>
@@ -30,23 +46,24 @@
       <form class="join-form">
         <div class="input-group">
           <label>Last Name:</label>
-          <input type="text">
+          <input type="text" placeholder="Enter Your Last Name">
         </div>
         <div class="input-group">
           <label>First Name:</label>
-          <input type="text">
+          <input type="text" placeholder="Enter Your First Name">
         </div>
         <div class="input-group">
           <label>Email:</label>
-          <input type="email">
+          <input type="email" placeholder="Enter Your Email">
         </div>
         <div class="input-group">
           <label>Phone Number:</label>
-          <input type="Phone">
+          <input type="Phone" placeholder="Enter Your Phone Number">
         </div>
-        <div class="input-group">
-          <label>Address:</label>
-          <input type="address">
+        <label><b>Address:</b></label>
+        <i aria-hidden="true" class="dot circle outline link icon" id="locator-button"></i>
+        <div class="input-group" id="locator-input-section">
+            <input type="text" placeholder="Enter Your Address" id="autocomplete" />
         </div>
         <div class="input-group">
           <button type="submit" class="btn">Join Now</button>
@@ -57,7 +74,6 @@
 
   <div class="join-page-circle-1"></div>
   <div class="join-page-circle-2"></div>
-
   <footer class="main-footer">
     <div class="container">
       <nav class="footer-nav">
@@ -85,4 +101,23 @@
     </div>
   </footer>
 </body>
+<script>
+  var c = function(pos){
+    var lat = pos.coords.latitude, long = pos.coords.longitude, coords =  lat + ',' + long;
+    document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk?q=' + coords + '&z=60&output=embed')
+  }
+
+
+  document.getElementById('locator-button').onclick = function(){
+    navigator.geolocation.getCurrentPosition(c);
+    return false;
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtzGj3P87fxpnICeY0tcCn95_0Pih4gt0&libraries=places">
+document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk?outputq=embed')
+
+</script>
+<script src="join.js"></script>
 </html>
+

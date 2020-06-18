@@ -16,6 +16,11 @@
   color: white;
 }
 
+.map{
+    height: 50%;
+}
+
+
 .join-form {
   background-color: #202027;
   width: 50vw;
@@ -31,7 +36,7 @@
 }
 
 .input-group:last-child {
-  margin-bottom: 0;
+  margin-bottom: 5;
 }
 
 .input-group label {
@@ -47,6 +52,13 @@
   padding: .025em;
   color: inherit;
   border-radius: 5px;
+  margin-bottom: auto;
+}
+
+
+
+.input-group locator-button{
+  size:5px;
 }
 
 .input-group input:focus {
@@ -65,6 +77,8 @@
     margin: 2rem 0;
   }
 }
+
+
 
 .join-page-circle-1 {
   position: absolute;
