@@ -8,6 +8,7 @@ import Cameracontents from './components/cameracontents';
 import FindAssist from './components/findassist';
 import Objselection from './components/objselection';
 import Produceid from './components/produceid';
+import Volunteer from './components/volunteer';
 
 
 const Stack = createStackNavigator();
@@ -50,6 +51,12 @@ function MyStack() {
         component={FindAssist}
         options={{ headerShown: false}} 
         /> 
+        <Stack.Screen 
+        name="Volunteer" 
+        component={Volunteer}
+        options={{ headerShown: false}} 
+        /> 
+      
       
     </Stack.Navigator>
   );

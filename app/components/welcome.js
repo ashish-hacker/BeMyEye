@@ -37,6 +37,7 @@ export default class Welcome extends React.Component  {
         <View style={styles.container}>
           <Image source={require('../assets/images/logo.png')} style={styles.logo}></Image>
           <Text style={styles.welcome} onPress={() => this.props.navigation.navigate('Select')}>Welcome!{"\n"}¡Bienvenido</Text>
+          <Text style={styles.vol} onPress={() => this.props.navigation.navigate('Volunteer')}>Volunteer</Text>
           <Image source={require('../assets/images/home.png')} style={styles.footer}></Image>
          
         
@@ -74,6 +75,15 @@ export default class Welcome extends React.Component  {
             zIndex:2,
             color:'#c2eabd',
         },
+        vol: {
+          fontFamily:'Avenir',
+          fontSize:40,
+          position:'absolute',
+          alignSelf:'center',
+          top:'55%',
+          zIndex:3,
+          color:'transparent',
+      },
         footer:{
           height:'110%',
           width:'120%',

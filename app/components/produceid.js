@@ -66,7 +66,7 @@ export default class Produceid extends React.Component {
               x=1;
 
 
-            let producelabel=await fetch('http://2c2be9aa1254.ngrok.io/getfoodlabels', {
+            let producelabel=await fetch('http://feed02313b0c.ngrok.io/getfoodlabels', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

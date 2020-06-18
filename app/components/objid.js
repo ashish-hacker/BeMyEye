@@ -67,7 +67,7 @@ export default class Objid extends React.Component {
               
 
 
-            let objlabel= await fetch('http://2c2be9aa1254.ngrok.io/labelanimage', {
+            let objlabel= await fetch('http://feed02313b0c.ngrok.io/labelanimage', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

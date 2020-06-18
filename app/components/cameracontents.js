@@ -65,7 +65,7 @@ export default class Cameracontents extends React.Component {
               console.log(pUrl);
               x=1;
           
-            let labelcontent=await fetch('http://2c2be9aa1254.ngrok.io/textify', {
+            let labelcontent=await fetch('http://feed02313b0c.ngrok.io/textify', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

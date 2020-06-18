@@ -11,6 +11,8 @@ let customFonts  = {
     'Futura': require('../assets/fonts/futura.ttf')
   };
 var currentPlace = null;
+var loc= null;
+var timest = null;
 export default class FindAssist extends React.Component  {
     state = {
         fontsLoaded: false,
@@ -44,13 +46,16 @@ export default class FindAssist extends React.Component  {
      
         let location = await Location.getCurrentPositionAsync({});
         this.setState({ locationResult: JSON.stringify(location) });
+        console.log(this.state.locationResult);
         const {coords: {latitude}} = location;
         const {coords: {longitude}} = location;
-        var loc={latitude: parseFloat(latitude),longitude: parseFloat(longitude)}
+        const {timestamp} = location;
+        timest = timestamp;
+        loc={latitude: parseFloat(latitude),longitude: parseFloat(longitude)};
         var place = await Location.reverseGeocodeAsync(loc);
         var cplace = place[0];
         this.setState({ placeResult: JSON.stringify(cplace) });
-        console.log('Place2'+this.state.placeResult);
+        console.log(this.state.placeResult);
         this.setState({sayLocation :'You are currently at '+cplace.name});
         console.log(this.state.sayLocation);
         currentPlace=this.state.sayLocation;
@@ -68,6 +73,32 @@ export default class FindAssist extends React.Component  {
       this._getLocationAsync();
       Speech.speak('How long do you plan to shop? Please provide your response in terms of minutes.');
     }
+
+
+    findassistant= async () =>{
+      fetch('http://feed02313b0c.ngrok.io/requesthelp', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              "name": "Ebtesam",
+              "phone" : "+8801996814278",
+              "timestamp": timest,
+              "duration": this.state.duration,
+              "loc": loc
+          })
+  })
+      .then((response) => response.json())
+      .then((responseJson) => {
+  console.log(responseJson);
+      })
+      .catch((error) => {
+          console.error(error);
+      });
+
+      Speech.speak('Finding volunteers nearby. You will receive a text when a match is found.');
+}
   
     render(){
         if (this.state.fontsLoaded) {
@@ -76,7 +107,7 @@ export default class FindAssist extends React.Component  {
           <Image source={require('../assets/images/findassist.png')} style={styles.alone}></Image>
           <TextInput style={styles.h1} value={this.state.duration} onChangeText={(val) => this.updateInputVal(val, 'duration')}></TextInput>
           <Image source={require('../assets/images/camerabtn.png')} style={styles.btn}></Image>
-          <Text style={styles.h2} onPress={this.whereAmI}> ASSISTANT</Text>
+          <Text style={styles.h2} onPress={this.whereAmI} onLongPress={() => this.findassistant()}> ASSISTANT</Text>
          
         </View>
         );
